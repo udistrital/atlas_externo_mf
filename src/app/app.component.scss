@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #edf4fa;
+}
+
+.main-container {
+  flex: 1 0 auto;
+  padding: 16px 0 0;
+}
+
+app-footer {
+  flex-shrink: 0;
+}

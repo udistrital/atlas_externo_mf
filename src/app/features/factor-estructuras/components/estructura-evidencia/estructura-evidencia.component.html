@@ -1,0 +1,174 @@
+<article
+  class="evidence-card"
+  [class.evidence-card--open]="
+    abierta()
+  "
+>
+  <header class="evidence-card__header">
+    <div class="evidence-title">
+      <span>
+        Estructura
+        {{ tipoLabel().toLowerCase() }}
+      </span>
+
+      <div class="evidence-title__line">
+        <h5>
+          {{
+            estructura.nombre ||
+              'Estructura sin nombre'
+          }}
+        </h5>
+
+        <span
+          class="type-chip"
+          [class.type-chip--table]="
+            tipoLabel() === 'Tabla'
+          "
+        >
+          {{ tipoLabel() }}
+        </span>
+      </div>
+    </div>
+
+    <div class="evidence-actions">
+      <!-- Única acción funcional -->
+      <button
+        type="button"
+        class="view-button"
+        title="Ver contenido"
+        aria-label="Ver contenido"
+        (click)="toggle()"
+      >
+        <mat-icon>visibility</mat-icon>
+        <span>Ver</span>
+      </button>
+
+      <button
+        type="button"
+        class="toggle-button"
+        [attr.aria-expanded]="abierta()"
+        aria-label="Desplegar estructura"
+        (click)="toggle()"
+      >
+        <mat-icon>
+          {{
+            abierta()
+              ? 'expand_less'
+              : 'expand_more'
+          }}
+        </mat-icon>
+      </button>
+    </div>
+  </header>
+
+  @if (abierta()) {
+    <section class="evidence-card__content">
+      <app-loading-state
+        [loading]="loading()"
+        label="Consultando contenido de la estructura..."
+      ></app-loading-state>
+
+      @if (error()) {
+        <div class="error-state">
+          {{ error() }}
+        </div>
+      }
+
+      @if (
+        !loading() &&
+        !error() &&
+        contenido();
+        as data
+      ) {
+        <div class="table-shell">
+          <table>
+            <thead>
+              <tr>
+                @for (
+                  columna of data.columnas;
+                  track columna
+                ) {
+                  <th>{{ columna }}</th>
+                }
+
+                <th class="actions-column">
+                  Acciones
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              @for (
+                fila of data.filas;
+                track $index
+              ) {
+                <tr>
+                  @for (
+                    columna of data.columnas;
+                    track columna
+                  ) {
+                    <td>
+                      {{
+                        valor(
+                          fila,
+                          columna
+                        )
+                      }}
+                    </td>
+                  }
+
+                  <td class="actions-cell">
+                    <!-- Solo se muestra Ver -->
+                    <button
+                      type="button"
+                      class="row-view-button"
+                      [title]="
+                        data.tipo ===
+                        'documental'
+                          ? 'Ver documento'
+                          : 'Ver registro'
+                      "
+                      (click)="verFila(fila)"
+                    >
+                      <mat-icon>
+                        visibility
+                      </mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              } @empty {
+                <tr>
+                  <td
+                    class="empty-cell"
+                    [attr.colspan]="
+                      data.columnas.length + 1
+                    "
+                  >
+                    No hay información
+                    registrada en esta
+                    estructura.
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <mat-paginator
+          [length]="data.total"
+          [pageIndex]="pageIndex"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="[
+            5,
+            10,
+            25,
+            50
+          ]"
+          showFirstLastButtons
+          aria-label="Paginación"
+          (page)="cambiarPagina($event)"
+        ></mat-paginator>
+      }
+    </section>
+  }
+</article>

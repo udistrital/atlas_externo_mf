@@ -1,0 +1,146 @@
+<section class="aspects-section">
+  <header class="aspects-section__header">
+    <span>Listado</span>
+    <h3>Aspectos a evaluar</h3>
+  </header>
+
+  <app-loading-state
+    [loading]="loading()"
+    label="Consultando aspectos..."
+  ></app-loading-state>
+
+  @if (error()) {
+    <div class="error-state">
+      {{ error() }}
+    </div>
+  }
+
+  @if (!loading() && !error()) {
+    <div class="aspects-list">
+      @for (
+        aspecto of aspectos();
+        track aspecto.id || $index
+      ) {
+        <article class="aspect-card">
+          <button
+            type="button"
+            class="aspect-card__header"
+            [attr.aria-expanded]="
+              estaAbierto(aspecto)
+            "
+            (click)="toggleAspecto(aspecto)"
+          >
+            <span class="aspect-number">
+              {{ $index + 1 }}
+            </span>
+
+            <span class="aspect-title">
+              <small>Aspecto</small>
+
+              <strong>
+                {{
+                  aspecto.nombre ||
+                    'Aspecto sin nombre'
+                }}
+              </strong>
+            </span>
+
+            <mat-icon>
+              {{
+                estaAbierto(aspecto)
+                  ? 'expand_less'
+                  : 'expand_more'
+              }}
+            </mat-icon>
+          </button>
+
+          @if (estaAbierto(aspecto)) {
+            <div class="aspect-card__content">
+              <section class="actions-bar">
+                <span>
+                  Acciones del aspecto
+                </span>
+
+                <div class="icon-button">
+                  <mat-icon>
+                    visibility
+                  </mat-icon>
+                </div>
+              </section>
+
+              <section class="evidence-section">
+                <header
+                  class="evidence-section__header"
+                >
+                  <span>
+                    Estructuras de evidencias
+                  </span>
+
+                  <h4>
+                    Contenido asociado al aspecto
+                  </h4>
+                </header>
+
+                <app-loading-state
+                  [loading]="
+                    estaCargandoEstructuras(
+                      aspecto
+                    )
+                  "
+                  label="Consultando estructuras..."
+                ></app-loading-state>
+
+                @if (
+                  mensajeErrorEstructuras(
+                    aspecto
+                  )
+                ) {
+                  <div class="error-state">
+                    {{
+                      mensajeErrorEstructuras(
+                        aspecto
+                      )
+                    }}
+                  </div>
+                }
+
+                @if (
+                  !estaCargandoEstructuras(
+                    aspecto
+                  ) &&
+                  !mensajeErrorEstructuras(
+                    aspecto
+                  )
+                ) {
+                  <div class="evidence-list">
+                    @for (
+                      estructura of
+                        estructuras(aspecto);
+                      track
+                        estructura.id || $index
+                    ) {
+                      <app-estructura-evidencia
+                        [estructura]="estructura"
+                      ></app-estructura-evidencia>
+                    } @empty {
+                      <div class="empty-state">
+                        No hay estructuras de
+                        evidencia activas para
+                        este aspecto.
+                      </div>
+                    }
+                  </div>
+                }
+              </section>
+            </div>
+          }
+        </article>
+      } @empty {
+        <div class="empty-state">
+          No hay aspectos registrados para
+          esta característica.
+        </div>
+      }
+    </div>
+  }
+</section>

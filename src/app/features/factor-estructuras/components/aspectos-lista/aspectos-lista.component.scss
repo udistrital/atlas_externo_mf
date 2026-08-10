@@ -1,0 +1,279 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.aspects-section {
+  width: 100%;
+  padding: 14px;
+
+  border: 1px solid #b9d8ce;
+  border-left: 5px solid #2e8b74;
+  border-radius: 14px;
+
+  background: #f1faf7;
+}
+
+.aspects-section__header {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+
+  border: 1px solid #c7e4da;
+  border-radius: 11px;
+
+  background: #e8f7f2;
+}
+
+.aspects-section__header span {
+  display: block;
+  margin-bottom: 3px;
+
+  color: #2e8b74;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.aspects-section__header h3 {
+  margin: 0;
+  color: #176a58;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.aspects-list {
+  display: grid;
+  gap: 11px;
+}
+
+.aspect-card {
+  overflow: hidden;
+
+  border: 1px solid #b9d8ce;
+  border-radius: 12px;
+
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(46, 139, 116, 0.08);
+}
+
+.aspect-card__header {
+  appearance: none;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 70px;
+  margin: 0;
+  padding: 10px 12px;
+
+  border: 0;
+  border-left: 5px solid #2e8b74;
+  border-radius: 0;
+  outline: 0;
+
+  background: #ffffff;
+  color: #29443d;
+
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.aspect-card__header:hover {
+  background: #edf8f4;
+}
+
+.aspect-card__header:focus-visible {
+  box-shadow: inset 0 0 0 3px rgba(46, 139, 116, 0.25);
+}
+
+.aspect-number {
+  display: grid;
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 9px;
+  background: #2e8b74;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.aspect-title {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.aspect-title small {
+  color: #2e8b74;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.aspect-title strong {
+  color: #29443d;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.aspect-card__header mat-icon {
+  justify-self: end;
+  color: #5f5caf;
+}
+
+.aspect-card__content {
+  padding: 12px;
+
+  border-top: 1px solid #d8ebe4;
+  background: #fbfefd;
+}
+
+.actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  min-height: 52px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+
+  border: 1px solid #c7e4da;
+  border-left: 5px solid #2e8b74;
+  border-radius: 10px;
+
+  background: #f4fbf8;
+}
+
+.actions-bar > span {
+  color: #1f6f5d;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+
+  border-radius: 50%;
+  background: #eceffc;
+  color: #5f5caf;
+}
+
+.icon-button mat-icon {
+  margin: 0;
+}
+
+.evidence-section {
+  padding: 12px;
+
+  border: 1px solid #cfe0ef;
+  border-left: 5px solid #4a7cad;
+  border-radius: 12px;
+
+  background: #f7fbff;
+}
+
+.evidence-section__header {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+
+  border: 1px solid #d7e7f4;
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+.evidence-section__header span {
+  display: block;
+  margin-bottom: 3px;
+
+  color: #4a6e98;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.evidence-section__header h4 {
+  margin: 0;
+  color: #2f4774;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.evidence-list {
+  display: grid;
+  gap: 10px;
+}
+
+app-estructura-evidencia {
+  display: block;
+  width: 100%;
+}
+
+.empty-state,
+.error-state {
+  padding: 14px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.empty-state {
+  border: 1px dashed #b9d8ce;
+  background: #ffffff;
+  color: #52746a;
+}
+
+.error-state {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+@media (max-width: 600px) {
+  .aspects-section {
+    padding: 10px;
+  }
+
+  .aspect-card__header {
+    grid-template-columns: 30px minmax(0, 1fr) 26px;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .aspect-card__content {
+    padding: 10px;
+  }
+
+  .evidence-section {
+    padding: 9px;
+  }
+}

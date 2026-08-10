@@ -1,0 +1,14 @@
+{
+  "/observatorios_crud": {
+    "target": "https://pruebasapi.intranetoas.udistrital.edu.co",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/gestor_documental_mid": {
+    "target": "https://pruebasapi.intranetoas.udistrital.edu.co",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

@@ -1,0 +1,39 @@
+<section class="factor-detail-page">
+  <button
+    mat-button
+    type="button"
+    class="back-button"
+    (click)="volver()"
+  >
+    <mat-icon>arrow_back</mat-icon>
+    Regresar a factores
+  </button>
+
+  <app-loading-state
+    [loading]="loading()"
+    label="Consultando factor y características..."
+  ></app-loading-state>
+
+  @if (error()) {
+    <div class="error-state">
+      {{ error() }}
+    </div>
+  }
+
+  @if (
+    !loading() &&
+    !error() &&
+    factor();
+    as factorActual
+  ) {
+    <app-factor-resumen
+      [factor]="factorActual"
+    ></app-factor-resumen>
+
+    <app-caracteristicas-lista
+      [caracteristicas]="
+        caracteristicas()
+      "
+    ></app-caracteristicas-lista>
+  }
+</section>

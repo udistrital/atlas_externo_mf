@@ -1,0 +1,47 @@
+<article class="factor-card">
+  <header class="factor-card__header">
+    <span>Factor de evaluación</span>
+
+    <h1>
+      {{ factor.nombre || 'Factor' }}
+    </h1>
+  </header>
+
+  <div class="factor-card__body">
+    <section class="actions-bar">
+      <span>Acciones del factor</span>
+
+      <div class="icon-button">
+        <mat-icon>visibility</mat-icon>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <div class="info-box">
+        <span>
+          Descripción del factor
+        </span>
+
+        <p>
+          {{
+            factor.descripcion ||
+              'Sin descripción registrada.'
+          }}
+        </p>
+      </div>
+
+      <div class="info-box info-box--score">
+        <span>
+          Calificación del factor
+        </span>
+
+        <strong>
+          {{
+            factor.calificacion ??
+              'Sin calificación registrada.'
+          }}
+        </strong>
+      </div>
+    </section>
+  </div>
+</article>

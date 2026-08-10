@@ -1,0 +1,5 @@
+.tab-content { padding: 18px 0 28px; }
+.panel-card { padding: 18px; margin-bottom: 18px; border-radius: 16px; }
+.panel-card h3 { margin: 0 0 6px; color: var(--color-primario); }
+.panel-card p { color: var(--color-muted); margin-top: 0; }
+.charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }

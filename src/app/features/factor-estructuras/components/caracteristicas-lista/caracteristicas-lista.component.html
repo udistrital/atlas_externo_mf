@@ -1,0 +1,112 @@
+<section class="characteristics-section">
+  <header class="characteristics-heading">
+    <span>Listado</span>
+    <h2>Características</h2>
+  </header>
+
+  <div class="characteristics-list">
+    @for (
+      caracteristica of
+        caracteristicasOrdenadas();
+      track caracteristica.id || $index
+    ) {
+      <article class="characteristic-card">
+        <button
+          type="button"
+          class="characteristic-card__header"
+          [attr.aria-expanded]="
+            estaAbierta(caracteristica)
+          "
+          (click)="toggle(caracteristica)"
+        >
+          <span class="characteristic-number">
+            {{ $index + 1 }}
+          </span>
+
+          <span class="characteristic-title">
+            <small>Característica</small>
+
+            <strong>
+              {{
+                caracteristica.nombre ||
+                  'Característica sin nombre'
+              }}
+            </strong>
+          </span>
+
+          <mat-icon>
+            {{
+              estaAbierta(caracteristica)
+                ? 'remove'
+                : 'add'
+            }}
+          </mat-icon>
+        </button>
+
+        @if (estaAbierta(caracteristica)) {
+          <div
+            class="characteristic-card__content"
+          >
+            <section class="actions-bar">
+              <span>
+                Acciones de la característica
+              </span>
+
+              <div class="icon-button">
+                <mat-icon>
+                  visibility
+                </mat-icon>
+              </div>
+            </section>
+
+            <section class="info-grid">
+              <div class="info-box">
+                <span>
+                  Descripción de la característica
+                </span>
+
+                <p>
+                  {{
+                    caracteristica.descripcion ||
+                      'Sin descripción registrada para esta característica.'
+                  }}
+                </p>
+              </div>
+
+              <div
+                class="info-box info-box--score"
+              >
+                <span>
+                  Calificación de la característica
+                </span>
+
+                <strong>
+                  {{
+                    caracteristica.calificacion ??
+                      'Sin calificación registrada.'
+                  }}
+                </strong>
+              </div>
+            </section>
+
+            @if (
+              caracteristica.id !== null &&
+              caracteristica.id !== undefined
+            ) {
+              <app-aspectos-lista
+                [caracteristicaId]="
+                  caracteristica.id
+                "
+              ></app-aspectos-lista>
+            }
+          </div>
+        }
+      </article>
+    } @empty {
+      <div class="empty-state">
+        No se encontraron características
+        activas para este factor.
+      </div>
+    }
+  </div>
+</section>

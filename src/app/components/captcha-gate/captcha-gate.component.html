@@ -1,0 +1,12 @@
+@if (captchaRequired()) {
+  <section class="captcha-gate" aria-live="polite">
+    <div class="captcha-gate__panel">
+      <mat-icon>verified_user</mat-icon>
+      <div class="captcha-gate__content">
+        <strong>Verificación requerida</strong>
+        <p>{{ reason() || 'Detectamos actividad inusual. Resuelve el captcha para continuar consultando la información.' }}</p>
+        <re-captcha [siteKey]="siteKey" (resolved)="onResolved($event)"></re-captcha>
+      </div>
+    </div>
+  </section>
+}

@@ -1,0 +1,43 @@
+<section class="page">
+  <button mat-button color="primary" type="button" (click)="volver()"><mat-icon>arrow_back</mat-icon> Regresar a procesos</button>
+
+  <article class="hero-card">
+    <span class="hero-card__label">Proceso seleccionado</span>
+    <h1>{{ proceso()?.nombre || 'Factores del proceso' }}</h1>
+    <p>{{ proceso()?.descripcion || 'Consulta los factores asociados al proceso y continúa hacia sus características, estructuras y evidencias.' }}</p>
+  </article>
+
+  <div class="section-header">
+    <div>
+      <span class="section-label">Listado</span>
+      <h2>Factores activos</h2>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar factor</mat-label>
+      <input matInput [(ngModel)]="search" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <app-loading-state [loading]="loading()" label="Consultando factores..."></app-loading-state>
+  @if (error()) { <div class="error-state">{{ error() }}</div> }
+
+  @if (!loading() && !error()) {
+    <div class="grid">
+      @for (factor of factoresFiltrados(); track factor.factor_id || factor.id || $index) {
+        <mat-card class="entity-card card-action" (click)="abrir(factor)">
+          <div class="entity-card__top">
+            <div class="entity-card__icon"><mat-icon>account_tree</mat-icon></div>
+            <span class="badge">Activo</span>
+          </div>
+          <h3>{{ factor.nombre || 'Factor sin nombre' }}</h3>
+          <p>{{ factor.descripcion || 'Sin descripción registrada.' }}</p>
+          @if (factor.calificacion) { <span class="badge badge--muted">Calificación: {{ factor.calificacion }}</span> }
+          <button mat-button color="primary" type="button">Ver estructuras <mat-icon>arrow_forward</mat-icon></button>
+        </mat-card>
+      } @empty {
+        <div class="empty-state">No se encontraron factores activos para este proceso.</div>
+      }
+    </div>
+  }
+</section>

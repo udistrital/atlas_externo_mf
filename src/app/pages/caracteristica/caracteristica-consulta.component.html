@@ -1,0 +1,66 @@
+<section class="page">
+  <button mat-button color="primary" type="button" (click)="volver()"><mat-icon>arrow_back</mat-icon> Regresar a estructuras</button>
+
+  <article class="hero-card">
+    <span class="hero-card__label">Consulta de evidencia</span>
+    <h1>{{ estructura()?.nombre || 'Característica' }}</h1>
+    <p>
+      {{ estructura()?.nombreFactor || 'Factor' }}
+      @if (estructura()?.nombreCaracteristica) { · {{ estructura()?.nombreCaracteristica }} }
+    </p>
+    <div class="actions-row"><span class="badge badge--warning">Solo lectura</span><span class="badge badge--muted">{{ estructura()?.tipo_evidencia || 'Evidencia' }}</span></div>
+  </article>
+
+  @if (error()) { <div class="error-state">{{ error() }}</div> }
+
+  <div class="section-header">
+    <div>
+      <span class="section-label">Búsqueda local</span>
+      <h2>Datos disponibles</h2>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar en datos cargados</mat-label>
+      <input matInput [(ngModel)]="search" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Tablas">
+      <section class="tab-content">
+        <app-loading-state [loading]="loading()" label="Consultando tabla..."></app-loading-state>
+        <app-dynamic-data-table [columns]="columnasDatos()" [rows]="datosFiltrados()"></app-dynamic-data-table>
+        <mat-paginator [length]="total" [pageSize]="pageSize" [pageIndex]="page" [pageSizeOptions]="[10, 25, 50, 100]" (page)="cambiarPagina($event)"></mat-paginator>
+      </section>
+    </mat-tab>
+
+    <mat-tab label="Documentos">
+      <section class="tab-content">
+        <app-loading-state [loading]="loadingDocs()" label="Consultando documentos..."></app-loading-state>
+        <app-dynamic-data-table [columns]="columnasArchivos()" [rows]="docsFiltrados()" [showFileAction]="true" (openFile)="abrirDocumento($event)"></app-dynamic-data-table>
+        <mat-paginator [length]="docsTotal" [pageSize]="docsPageSize" [pageIndex]="docsPage" [pageSizeOptions]="[10, 25, 50, 100]" (page)="cambiarPaginaDocs($event)"></mat-paginator>
+      </section>
+    </mat-tab>
+
+    <mat-tab label="Paneles y gráficas">
+      <section class="tab-content">
+        <app-loading-state [loading]="loadingPaneles()" label="Consultando paneles..."></app-loading-state>
+        @for (panel of paneles(); track panel.id || $index) {
+          <mat-card class="panel-card">
+            <h3>{{ panel.nombre || 'Panel sin nombre' }}</h3>
+            <p>{{ panel.descripcion || 'Panel de consulta.' }}</p>
+            <div class="charts-grid">
+              @for (grafico of graficos(panel.id); track grafico.id || $index) {
+                <app-generic-chart [dashboardId]="panel.id!" [graficoId]="grafico.id!" [tipo]="grafico.tipo || ''" [titulo]="grafico.nombre || 'Gráfico'"></app-generic-chart>
+              } @empty {
+                <div class="empty-state">Este panel no tiene gráficas activas.</div>
+              }
+            </div>
+          </mat-card>
+        } @empty {
+          <div class="empty-state">No se encontraron paneles activos para esta consulta.</div>
+        }
+      </section>
+    </mat-tab>
+  </mat-tab-group>
+</section>

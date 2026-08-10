@@ -1,0 +1,134 @@
+<section class="atlas-page">
+  <article class="atlas-hero">
+    <div class="atlas-hero__header">
+      <span>Sistema de evidencias</span>
+      <h1>{{ proceso()?.nombre || 'Autoevaluación Institucional' }}</h1>
+    </div>
+
+    <div class="atlas-info-grid">
+      <section class="atlas-info-card">
+        <div class="atlas-info-card__icon">
+          <mat-icon>account_tree</mat-icon>
+        </div>
+
+        <div>
+          <h3>¿Qué es?</h3>
+          <p>
+            Es una herramienta que permite organizar documentos, registros,
+            datos, indicadores, estadísticas y demás evidencias recopiladas
+            para analizar y sistematizar la autoevaluación institucional.
+          </p>
+        </div>
+      </section>
+
+      <section class="atlas-info-card">
+        <div class="atlas-info-card__icon atlas-info-card__icon--green">
+          <mat-icon>verified_user</mat-icon>
+        </div>
+
+        <div>
+          <h3>¿Para qué sirve?</h3>
+          <p>
+            Permite respaldar los juicios de valor, organizar la información
+            institucional, facilitar la verificación externa y demostrar el
+            cumplimiento de estándares de calidad.
+          </p>
+        </div>
+      </section>
+    </div>
+  </article>
+
+  <section class="factor-toolbar">
+    <div>
+      <span class="section-label">Listado</span>
+      <h2>Factores asociados</h2>
+    </div>
+
+    <div class="factor-toolbar__right">
+      <span class="counter-pill">
+        {{ factores().length }} activos
+      </span>
+
+      <div class="search-box">
+        <input
+          type="text"
+          [(ngModel)]="search"
+          placeholder="Buscar factor"
+        />
+        <mat-icon>search</mat-icon>
+      </div>
+    </div>
+  </section>
+
+  <app-loading-state
+    [loading]="loading()"
+    label="Consultando factores..."
+  ></app-loading-state>
+
+  @if (error()) {
+    <div class="error-state">
+      {{ error() }}
+    </div>
+  }
+
+  @if (!loading() && !error()) {
+    <section class="factor-grid">
+      @for (factor of factoresFiltrados(); track factor.factor_id || factor.id || $index) {
+        <mat-card class="factor-card">
+          <div class="factor-card__top">
+            <div class="factor-card__icon">
+              <mat-icon>format_list_bulleted</mat-icon>
+            </div>
+
+            <span class="status-pill">Activo</span>
+          </div>
+
+          <div class="factor-card__content">
+            <span class="factor-code">
+              {{ etiquetaFactor(factor, $index) }}
+            </span>
+
+            <h3>{{ factor.nombre || 'Factor sin nombre' }}</h3>
+
+            <p>
+              {{ factor.descripcion || 'Sin descripción registrada.' }}
+            </p>
+
+            @if (factor.calificacion) {
+              <div class="factor-score">
+                <mat-icon inline>star_outline</mat-icon>
+                Calificación: {{ factor.calificacion }}
+              </div>
+            }
+          </div>
+
+          <div class="factor-card__footer">
+            <button
+              mat-icon-button
+              type="button"
+              class="view-icon"
+              aria-label="Visualizar factor"
+              (click)="abrirFactor(factor)"
+            >
+              <mat-icon>visibility</mat-icon>
+            </button>
+
+            <button
+              mat-button
+              type="button"
+              class="view-link"
+              (click)="abrirFactor(factor)"
+            >
+              Ver factor
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+      } @empty {
+        <div class="empty-state">
+          No se encontraron factores activos asociados al proceso.
+        </div>
+      }
+    </section>
+  }
+</section>

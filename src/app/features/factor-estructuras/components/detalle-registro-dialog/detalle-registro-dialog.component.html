@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>
+  {{ data.titulo }}
+</h2>
+
+<mat-dialog-content>
+  <dl class="detail-grid">
+    @for (
+      columna of data.columnas;
+      track columna
+    ) {
+      <div class="detail-field">
+        <dt>{{ columna }}</dt>
+        <dd>{{ valor(columna) }}</dd>
+      </div>
+    }
+  </dl>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button
+    mat-button
+    type="button"
+    mat-dialog-close
+  >
+    Cerrar
+  </button>
+</mat-dialog-actions>

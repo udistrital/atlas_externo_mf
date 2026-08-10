@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.factor-detail-page {
+  width: min(1160px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 10px 0 42px;
+}
+
+.back-button {
+  min-height: 34px;
+  margin-bottom: 12px;
+  padding: 0 14px;
+
+  border: 1px solid #ccd4ea;
+  border-radius: 999px;
+
+  background: #f0f2ff;
+  color: #4d4a9c;
+
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.back-button mat-icon {
+  margin-right: 5px;
+}
+
+app-factor-resumen,
+app-caracteristicas-lista {
+  display: block;
+  width: 100%;
+}
+
+.error-state {
+  padding: 16px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: #fef2f2;
+  color: #991b1b;
+
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .factor-detail-page {
+    width: min(100% - 20px, 1160px);
+  }
+}
