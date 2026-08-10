@@ -18,6 +18,8 @@ for (const fileName of envFiles) {
   let fileContent = fs.readFileSync(targetPath, { encoding: 'utf8' });
 
   const replacements = {
+    TURNSTILE_SITE_KEY: process.env.TURNSTILE_SITE_KEY,
+    TURNSTILE_VERIFY_URL: process.env.TURNSTILE_VERIFY_URL,
     CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY,
     MAIN_BACKEND: process.env.MAIN_BACKEND,
     GESTOR_DOCUMENTAL: process.env.GESTOR_DOCUMENTAL,

@@ -1,12 +1,58 @@
 @if (captchaRequired()) {
-  <section class="captcha-gate" aria-live="polite">
-    <div class="captcha-gate__panel">
-      <mat-icon>verified_user</mat-icon>
-      <div class="captcha-gate__content">
-        <strong>Verificación requerida</strong>
-        <p>{{ reason() || 'Detectamos actividad inusual. Resuelve el captcha para continuar consultando la información.' }}</p>
-        <re-captcha [siteKey]="siteKey" (resolved)="onResolved($event)"></re-captcha>
-      </div>
+
+<section class="captcha-gate" aria-live="polite">
+
+  <div class="captcha-gate__panel">
+
+    <mat-icon>
+      verified_user
+    </mat-icon>
+
+    <div class="captcha-gate__content">
+
+      <strong>
+        Verificación requerida
+      </strong>
+
+      <p>
+        {{
+        reason() ||
+        'Detectamos actividad inusual. Completa la verificación para continuar consultando la información.'
+        }}
+      </p>
+
+      @if (siteKey) {
+
+      <app-turnstile-widget [siteKey]="siteKey" (tokenChange)="onToken($event)" (expired)="onExpired()"
+        (widgetError)="onWidgetError($event)" />
+
+      } @else {
+
+      <p class="captcha-error">
+        Turnstile no está configurado.
+      </p>
+
+      }
+
+      @if (verifying()) {
+
+      <p>
+        Validando...
+      </p>
+
+      }
+
+      @if (verificationError()) {
+
+      <p class="captcha-error">
+        {{ verificationError() }}
+      </p>
+
+      }
+
     </div>
-  </section>
+
+  </div>
+
+</section>
 }
