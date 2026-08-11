@@ -3,7 +3,8 @@
 import {
   Component,
   OnInit,
-  signal
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -54,6 +55,7 @@ import {
     CaracteristicasListaComponent
 ],
     templateUrl: './estructuras.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './estructuras.component.scss'
 })
 export class EstructurasComponent

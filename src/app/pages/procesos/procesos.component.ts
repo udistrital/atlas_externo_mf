@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, signal } from '@angular/core';
+import { Component, OnInit, computed, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -27,6 +27,7 @@ import { NavigationStateService } from '../../core/state/navigation-state.servic
     LoadingStateComponent
 ],
     templateUrl: './procesos.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./procesos.component.scss']
 })
 export class ProcesosComponent implements OnInit {

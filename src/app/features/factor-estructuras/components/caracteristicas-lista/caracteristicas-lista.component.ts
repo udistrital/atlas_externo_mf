@@ -4,7 +4,8 @@ import {
   Component,
   Input,
   computed,
-  signal
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -24,6 +25,7 @@ import {
     AspectosListaComponent
 ],
     templateUrl: './caracteristicas-lista.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './caracteristicas-lista.component.scss'
 })
 export class CaracteristicasListaComponent {

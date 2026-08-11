@@ -2,7 +2,8 @@
 
 import {
   Component,
-  Inject
+  Inject,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -25,6 +26,7 @@ import {
     MatDialogModule
 ],
     templateUrl: './detalle-registro-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './detalle-registro-dialog.component.scss'
 })
 export class DetalleRegistroDialogComponent {

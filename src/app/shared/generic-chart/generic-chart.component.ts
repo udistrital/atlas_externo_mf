@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ObservatoriosReadService } from '../../core/http/observatorios-read.service';
@@ -9,6 +9,7 @@ interface ChartPoint { label: string; value: number; width: number; }
     selector: 'app-generic-chart',
     imports: [CommonModule, MatProgressSpinnerModule],
     templateUrl: './generic-chart.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './generic-chart.component.scss'
 })
 export class GenericChartComponent implements OnChanges {

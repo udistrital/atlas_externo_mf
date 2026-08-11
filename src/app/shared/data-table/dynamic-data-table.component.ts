@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
     selector: 'app-dynamic-data-table',
     imports: [MatButtonModule, MatIconModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './dynamic-data-table.component.html'
 })
 export class DynamicDataTableComponent {

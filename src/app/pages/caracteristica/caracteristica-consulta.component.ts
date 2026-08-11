@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, signal } from '@angular/core';
+import { Component, OnInit, computed, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +20,7 @@ import { GenericChartComponent } from '../../shared/generic-chart/generic-chart.
     selector: 'app-caracteristica-consulta',
     imports: [FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule, MatPaginatorModule, LoadingStateComponent, DynamicDataTableComponent, GenericChartComponent],
     templateUrl: './caracteristica-consulta.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './caracteristica-consulta.component.scss'
 })
 export class CaracteristicaConsultaComponent implements OnInit {

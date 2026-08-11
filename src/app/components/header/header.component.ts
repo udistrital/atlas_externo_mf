@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation } from '@angular/core';
+import {Component, Input, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
     imports: [MatSelectModule, RouterModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
     encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent{

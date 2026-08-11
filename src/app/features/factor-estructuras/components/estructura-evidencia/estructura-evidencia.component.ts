@@ -1,9 +1,10 @@
 
 
 import {
-    Component,
-    Input,
-    signal
+  Component,
+  Input,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -49,6 +50,7 @@ import {
     LoadingStateComponent
 ],
     templateUrl: './estructura-evidencia.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './estructura-evidencia.component.scss'
 })
 export class EstructuraEvidenciaComponent {

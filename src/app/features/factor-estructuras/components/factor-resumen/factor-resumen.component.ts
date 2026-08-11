@@ -1,7 +1,8 @@
 
 import {
   Component,
-  Input
+  Input,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -16,6 +17,7 @@ import {
     MatIconModule
 ],
     templateUrl: './factor-resumen.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './factor-resumen.component.scss'
 })
 export class FactorResumenComponent {
