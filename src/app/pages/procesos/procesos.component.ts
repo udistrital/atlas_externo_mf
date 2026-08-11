@@ -16,20 +16,19 @@ import { Factor, Proceso } from '../../core/models/domain.models';
 import { NavigationStateService } from '../../core/state/navigation-state.service';
 
 @Component({
-  selector: 'app-procesos',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    LoadingStateComponent
-  ],
-  templateUrl: './procesos.component.html',
-  styleUrls: ['./procesos.component.scss']
+    selector: 'app-procesos',
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        LoadingStateComponent
+    ],
+    templateUrl: './procesos.component.html',
+    styleUrls: ['./procesos.component.scss']
 })
 export class ProcesosComponent implements OnInit {
   readonly proceso = signal<Proceso | null>(null);

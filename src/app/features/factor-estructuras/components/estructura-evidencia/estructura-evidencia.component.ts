@@ -42,7 +42,6 @@ import {
 
 @Component({
     selector: 'app-estructura-evidencia',
-    standalone: true,
     imports: [
         CommonModule,
         MatDialogModule,
@@ -50,10 +49,8 @@ import {
         MatPaginatorModule,
         LoadingStateComponent
     ],
-    templateUrl:
-        './estructura-evidencia.component.html',
-    styleUrl:
-        './estructura-evidencia.component.scss'
+    templateUrl: './estructura-evidencia.component.html',
+    styleUrl: './estructura-evidencia.component.scss'
 })
 export class EstructuraEvidenciaComponent {
     @Input({

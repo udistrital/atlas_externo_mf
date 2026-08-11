@@ -6,12 +6,11 @@ import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  standalone: true,
-  imports: [MatSelectModule, RouterModule, CommonModule],
-  encapsulation: ViewEncapsulation.Emulated,
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    imports: [MatSelectModule, RouterModule, CommonModule],
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent{
   @Input('appname') appname: any;

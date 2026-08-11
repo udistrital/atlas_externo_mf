@@ -45,23 +45,17 @@ import {
 } from '../../shared/loading-state/loading-state.component';
 
 @Component({
-  selector: 'app-estructuras',
-  standalone: true,
-
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    LoadingStateComponent,
-    FactorResumenComponent,
-    CaracteristicasListaComponent
-  ],
-
-  templateUrl:
-    './estructuras.component.html',
-
-  styleUrl:
-    './estructuras.component.scss'
+    selector: 'app-estructuras',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        LoadingStateComponent,
+        FactorResumenComponent,
+        CaracteristicasListaComponent
+    ],
+    templateUrl: './estructuras.component.html',
+    styleUrl: './estructuras.component.scss'
 })
 export class EstructurasComponent
   implements OnInit

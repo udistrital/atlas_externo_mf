@@ -4,10 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-dynamic-data-table',
-  standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
-  templateUrl: './dynamic-data-table.component.html'
+    selector: 'app-dynamic-data-table',
+    imports: [CommonModule, MatButtonModule, MatIconModule],
+    templateUrl: './dynamic-data-table.component.html'
 })
 export class DynamicDataTableComponent {
   @Input() columns: string[] = [];

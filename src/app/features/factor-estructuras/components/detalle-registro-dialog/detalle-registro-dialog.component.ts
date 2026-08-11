@@ -19,22 +19,14 @@ import {
 } from '../../models/estructura-view.models';
 
 @Component({
-  selector:
-    'app-detalle-registro-dialog',
-
-  standalone: true,
-
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatDialogModule
-  ],
-
-  templateUrl:
-    './detalle-registro-dialog.component.html',
-
-  styleUrl:
-    './detalle-registro-dialog.component.scss'
+    selector: 'app-detalle-registro-dialog',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatDialogModule
+    ],
+    templateUrl: './detalle-registro-dialog.component.html',
+    styleUrl: './detalle-registro-dialog.component.scss'
 })
 export class DetalleRegistroDialogComponent {
   constructor(

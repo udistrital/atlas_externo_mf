@@ -6,11 +6,10 @@ import { ObservatoriosReadService } from '../../core/http/observatorios-read.ser
 interface ChartPoint { label: string; value: number; width: number; }
 
 @Component({
-  selector: 'app-generic-chart',
-  standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
-  templateUrl: './generic-chart.component.html',
-  styleUrl: './generic-chart.component.scss'
+    selector: 'app-generic-chart',
+    imports: [CommonModule, MatProgressSpinnerModule],
+    templateUrl: './generic-chart.component.html',
+    styleUrl: './generic-chart.component.scss'
 })
 export class GenericChartComponent implements OnChanges {
   @Input({ required: true }) dashboardId!: string | number;

@@ -17,11 +17,10 @@ import { DynamicDataTableComponent } from '../../shared/data-table/dynamic-data-
 import { GenericChartComponent } from '../../shared/generic-chart/generic-chart.component';
 
 @Component({
-  selector: 'app-caracteristica-consulta',
-  standalone: true,
-  imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule, MatPaginatorModule, LoadingStateComponent, DynamicDataTableComponent, GenericChartComponent],
-  templateUrl: './caracteristica-consulta.component.html',
-  styleUrl: './caracteristica-consulta.component.scss'
+    selector: 'app-caracteristica-consulta',
+    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule, MatPaginatorModule, LoadingStateComponent, DynamicDataTableComponent, GenericChartComponent],
+    templateUrl: './caracteristica-consulta.component.html',
+    styleUrl: './caracteristica-consulta.component.scss'
 })
 export class CaracteristicaConsultaComponent implements OnInit {
   readonly estructura = signal<EstructuraEvidencia | null>(null);

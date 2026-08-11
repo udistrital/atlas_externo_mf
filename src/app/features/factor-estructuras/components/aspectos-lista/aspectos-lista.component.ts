@@ -27,18 +27,15 @@ import {
 } from '../estructura-evidencia/estructura-evidencia.component';
 
 @Component({
-  selector: 'app-aspectos-lista',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    LoadingStateComponent,
-    EstructuraEvidenciaComponent
-  ],
-  templateUrl:
-    './aspectos-lista.component.html',
-  styleUrl:
-    './aspectos-lista.component.scss'
+    selector: 'app-aspectos-lista',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        LoadingStateComponent,
+        EstructuraEvidenciaComponent
+    ],
+    templateUrl: './aspectos-lista.component.html',
+    styleUrl: './aspectos-lista.component.scss'
 })
 export class AspectosListaComponent
   implements OnInit

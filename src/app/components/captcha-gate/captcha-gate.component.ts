@@ -34,21 +34,14 @@ import {
 } from '../../shared/turnstile-widget/turnstile-widget.component';
 
 @Component({
-  selector: 'app-captcha-gate',
-
-  standalone: true,
-
-  imports: [
-    CommonModule,
-    MatIconModule,
-    TurnstileWidgetComponent
-  ],
-
-  templateUrl:
-    './captcha-gate.component.html',
-
-  styleUrl:
-    './captcha-gate.component.scss'
+    selector: 'app-captcha-gate',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        TurnstileWidgetComponent
+    ],
+    templateUrl: './captcha-gate.component.html',
+    styleUrl: './captcha-gate.component.scss'
 })
 export class CaptchaGateComponent {
 

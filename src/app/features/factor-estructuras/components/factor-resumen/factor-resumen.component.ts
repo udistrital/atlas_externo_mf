@@ -11,16 +11,13 @@ import {
 } from '../../../../core/models/domain.models';
 
 @Component({
-  selector: 'app-factor-resumen',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule
-  ],
-  templateUrl:
-    './factor-resumen.component.html',
-  styleUrl:
-    './factor-resumen.component.scss'
+    selector: 'app-factor-resumen',
+    imports: [
+        CommonModule,
+        MatIconModule
+    ],
+    templateUrl: './factor-resumen.component.html',
+    styleUrl: './factor-resumen.component.scss'
 })
 export class FactorResumenComponent {
   @Input({

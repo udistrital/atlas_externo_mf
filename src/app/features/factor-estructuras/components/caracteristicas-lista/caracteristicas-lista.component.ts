@@ -18,17 +18,14 @@ import {
 } from '../aspectos-lista/aspectos-lista.component';
 
 @Component({
-  selector: 'app-caracteristicas-lista',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    AspectosListaComponent
-  ],
-  templateUrl:
-    './caracteristicas-lista.component.html',
-  styleUrl:
-    './caracteristicas-lista.component.scss'
+    selector: 'app-caracteristicas-lista',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        AspectosListaComponent
+    ],
+    templateUrl: './caracteristicas-lista.component.html',
+    styleUrl: './caracteristicas-lista.component.scss'
 })
 export class CaracteristicasListaComponent {
   private readonly items =
