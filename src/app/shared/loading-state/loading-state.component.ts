@@ -1,17 +1,17 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-loading-state',
-  standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
-  template: `
+    selector: 'app-loading-state',
+    imports: [MatProgressSpinnerModule],
+    template: `
     @if (loading) {
       <div class="loading"><mat-spinner diameter="34"></mat-spinner><span>{{ label }}</span></div>
     }
   `,
-  styles: [`
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styles: [`
     .loading { display: flex; align-items: center; gap: 12px; padding: 18px; color: var(--color-muted); }
   `]
 })

@@ -1,5 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, provideZoneChangeDetection } from '@angular/core';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
@@ -8,7 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-const bootstrap = () => bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
+const bootstrap = () => bootstrapApplication(AppComponent, {...appConfig, providers: [provideZoneChangeDetection(), ...appConfig.providers]}).catch((err) => console.error(err));
 
 const obtenerTokenPublico = async (): Promise<void> => {
   if (!environment.PUBLIC_CLIENT_AUTH.enabled || !environment.TOKEN.CLIENTE_ID) return;

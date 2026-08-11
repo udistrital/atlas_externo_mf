@@ -1,9 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
-    Component,
-    Input,
-    signal
+  Component,
+  Input,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -42,18 +43,15 @@ import {
 
 @Component({
     selector: 'app-estructura-evidencia',
-    standalone: true,
     imports: [
-        CommonModule,
-        MatDialogModule,
-        MatIconModule,
-        MatPaginatorModule,
-        LoadingStateComponent
-    ],
-    templateUrl:
-        './estructura-evidencia.component.html',
-    styleUrl:
-        './estructura-evidencia.component.scss'
+    MatDialogModule,
+    MatIconModule,
+    MatPaginatorModule,
+    LoadingStateComponent
+],
+    templateUrl: './estructura-evidencia.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './estructura-evidencia.component.scss'
 })
 export class EstructuraEvidenciaComponent {
     @Input({

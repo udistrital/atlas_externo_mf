@@ -1,10 +1,11 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
   Component,
   Input,
   OnInit,
-  signal
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -27,18 +28,15 @@ import {
 } from '../estructura-evidencia/estructura-evidencia.component';
 
 @Component({
-  selector: 'app-aspectos-lista',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-aspectos-lista',
+    imports: [
     MatIconModule,
     LoadingStateComponent,
     EstructuraEvidenciaComponent
-  ],
-  templateUrl:
-    './aspectos-lista.component.html',
-  styleUrl:
-    './aspectos-lista.component.scss'
+],
+    templateUrl: './aspectos-lista.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './aspectos-lista.component.scss'
 })
 export class AspectosListaComponent
   implements OnInit

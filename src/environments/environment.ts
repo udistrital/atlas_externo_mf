@@ -7,7 +7,13 @@ export const environment = {
   MAIN_BACKEND: 'http://localhost:8000/api/v1',
   GESTOR_DOCUMENTAL: 'http://localhost:8034/v1/',
   //GESTOR_DOCUMENTAL: 'https://autenticacion.portaloas.udistrital.edu.co/apioas/gestor_documental_mid/v1/',
-  CAPTCHA_SITE_KEY: '6Le_I3UrAAAAAPze_hJKe7E9lKKYjscOFyvSSE-g',
+  TURNSTILE_SITE_KEY: '',
+  /*
+   * Este endpoint NO es Cloudflare.
+   * Es un endpoint del propio backend/MID que
+   * validará el token contra Cloudflare.
+   */
+  TURNSTILE_VERIFY_URL: '',
   PUBLIC_CLIENT_AUTH: {
     enabled: true,
     storageKey: 'access_token'
@@ -23,10 +29,5 @@ export const environment = {
     earlyRequestWindowMs: 2500,
     captchaSolvedTtlMs: 15 * 60 * 1000,
     apiErrorThreshold: 6
-  },
-  CAPTCHA: {
-    enabled: false,
-    mode: 'suspicious-only',
-    siteKey: ''
   }
 };

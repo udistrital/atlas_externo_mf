@@ -1,5 +1,5 @@
-import { Component, OnInit, computed, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, computed, signal, ChangeDetectionStrategy } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { finalize, of, switchMap } from 'rxjs';
@@ -16,10 +16,8 @@ import { Factor, Proceso } from '../../core/models/domain.models';
 import { NavigationStateService } from '../../core/state/navigation-state.service';
 
 @Component({
-  selector: 'app-procesos',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-procesos',
+    imports: [
     FormsModule,
     MatButtonModule,
     MatCardModule,
@@ -27,9 +25,10 @@ import { NavigationStateService } from '../../core/state/navigation-state.servic
     MatIconModule,
     MatInputModule,
     LoadingStateComponent
-  ],
-  templateUrl: './procesos.component.html',
-  styleUrls: ['./procesos.component.scss']
+],
+    templateUrl: './procesos.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrls: ['./procesos.component.scss']
 })
 export class ProcesosComponent implements OnInit {
   readonly proceso = signal<Proceso | null>(null);

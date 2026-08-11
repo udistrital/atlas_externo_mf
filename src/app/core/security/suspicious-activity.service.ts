@@ -15,22 +15,68 @@ export class SuspiciousActivityService {
   private humanInteractions = 0;
   private apiErrors = 0;
   private captchaSolvedAt = 0;
+  private monitoringStarted = false;
 
   constructor(private readonly router: Router) {}
 
   startMonitoring(): void {
-    const events = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
-    for (const eventName of events) {
-      window.addEventListener(eventName, () => this.registerHumanInteraction(), { passive: true });
+
+    if (this.monitoringStarted) {
+      return;
     }
 
-    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
-      this.routeTimestamps.push(Date.now());
-      this.trim(this.routeTimestamps, 60_000);
-      if (this.routeTimestamps.length > environment.SECURITY.maxRouteChangesPerMinute) {
-        this.requireCaptcha('Navegación inusualmente rápida.');
-      }
-    });
+    this.monitoringStarted = true;
+
+    const events = [
+      'mousemove',
+      'keydown',
+      'click',
+      'scroll',
+      'touchstart'
+    ];
+
+    for (
+      const eventName of events
+    ) {
+      window.addEventListener(
+        eventName,
+        () =>
+          this.registerHumanInteraction(),
+        {
+          passive: true
+        }
+      );
+    }
+
+    this.router.events
+      .pipe(
+        filter(
+          (event) =>
+            event instanceof NavigationEnd
+        )
+      )
+      .subscribe(() => {
+
+        this.routeTimestamps.push(
+          Date.now()
+        );
+
+        this.trim(
+          this.routeTimestamps,
+          60_000
+        );
+
+        if (
+          this.routeTimestamps.length >
+          environment.SECURITY
+            .maxRouteChangesPerMinute
+        ) {
+
+          this.requireCaptcha(
+            'Navegación inusualmente rápida.'
+          );
+        }
+      });
   }
 
   registerRequest(): void {
@@ -64,7 +110,26 @@ export class SuspiciousActivityService {
     this.reason.set('');
     this.apiErrors = 0;
     this.requestTimestamps.length = 0;
-    sessionStorage.setItem('atlas_external_captcha_token', token);
+  }
+
+  markCaptchaVerified(): void {
+    this.captchaSolvedAt =
+      Date.now();
+
+    this.captchaResolved.set(
+      true
+    );
+
+    this.captchaRequired.set(
+      false
+    );
+
+    this.reason.set('');
+
+    this.apiErrors = 0;
+
+    this.requestTimestamps.length =
+      0;
   }
 
   needsCaptchaNow(): boolean {

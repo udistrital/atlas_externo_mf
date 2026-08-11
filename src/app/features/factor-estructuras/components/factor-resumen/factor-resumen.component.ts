@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
-  Input
+  Input,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
@@ -11,16 +12,13 @@ import {
 } from '../../../../core/models/domain.models';
 
 @Component({
-  selector: 'app-factor-resumen',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-factor-resumen',
+    imports: [
     MatIconModule
-  ],
-  templateUrl:
-    './factor-resumen.component.html',
-  styleUrl:
-    './factor-resumen.component.scss'
+],
+    templateUrl: './factor-resumen.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './factor-resumen.component.scss'
 })
 export class FactorResumenComponent {
   @Input({

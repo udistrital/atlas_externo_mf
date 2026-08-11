@@ -1,9 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
   Component,
   OnInit,
-  signal
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -45,23 +46,17 @@ import {
 } from '../../shared/loading-state/loading-state.component';
 
 @Component({
-  selector: 'app-estructuras',
-  standalone: true,
-
-  imports: [
-    CommonModule,
+    selector: 'app-estructuras',
+    imports: [
     MatButtonModule,
     MatIconModule,
     LoadingStateComponent,
     FactorResumenComponent,
     CaracteristicasListaComponent
-  ],
-
-  templateUrl:
-    './estructuras.component.html',
-
-  styleUrl:
-    './estructuras.component.scss'
+],
+    templateUrl: './estructuras.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './estructuras.component.scss'
 })
 export class EstructurasComponent
   implements OnInit

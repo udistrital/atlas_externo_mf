@@ -1,0 +1,148 @@
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  ViewChild
+} from '@angular/core';
+
+import {
+  TurnstileApi,
+  TurnstileLoaderService
+} from '../../core/security/turnstile-loader.service';
+
+@Component({
+  selector: 'app-turnstile-widget',
+
+  standalone: true,
+
+  templateUrl:
+    './turnstile-widget.component.html',
+
+  styleUrl:
+    './turnstile-widget.component.scss'
+})
+export class TurnstileWidgetComponent
+  implements AfterViewInit, OnDestroy {
+
+  @Input({
+    required: true
+  })
+  siteKey = '';
+
+  @Output()
+  readonly tokenChange =
+    new EventEmitter<string>();
+
+  @Output()
+  readonly expired =
+    new EventEmitter<void>();
+
+  @Output()
+  readonly widgetError =
+    new EventEmitter<string>();
+
+  @ViewChild(
+    'container',
+    {
+      static: true
+    }
+  )
+  private container!:
+    ElementRef<HTMLDivElement>;
+
+  private api?: TurnstileApi;
+
+  private widgetId?: string;
+
+  constructor(
+    private readonly loader:
+      TurnstileLoaderService
+  ) {}
+
+  async ngAfterViewInit(): Promise<void> {
+
+    try {
+
+      this.api =
+        await this.loader.load();
+
+      this.widgetId =
+        this.api.render(
+          this.container.nativeElement,
+          {
+            sitekey: this.siteKey,
+
+            theme: 'auto',
+
+            callback: (
+              token: string
+            ) => {
+              this.tokenChange.emit(
+                token
+              );
+            },
+
+            'expired-callback':
+              () => {
+
+                this.expired.emit();
+
+              },
+
+            'error-callback':
+              (
+                code?: string
+              ) => {
+
+                this.widgetError.emit(
+                  code ||
+                  'Error desconocido'
+                );
+
+              }
+          }
+        );
+
+    } catch (error) {
+
+      console.error(
+        'Error cargando Turnstile:',
+        error
+      );
+
+      this.widgetError.emit(
+        'No fue posible cargar la verificación.'
+      );
+    }
+  }
+
+  reset(): void {
+
+    if (
+      this.api &&
+      this.widgetId
+    ) {
+
+      this.api.reset(
+        this.widgetId
+      );
+    }
+  }
+
+  ngOnDestroy(): void {
+
+    if (
+      this.api &&
+      this.widgetId
+    ) {
+
+      this.api.remove(
+        this.widgetId
+      );
+    }
+  }
+}

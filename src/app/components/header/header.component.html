@@ -4,7 +4,7 @@
       class="brand-logo"
       src="assets/images/atlas_logotipo.svg"
       alt="Atlas - Sistema integrado de evidencias"
-    />
+      />
   </a>
 
   <div class="header-lang-container">
@@ -12,10 +12,12 @@
       class="lang-selector"
       [(value)]="langCookie"
       (selectionChange)="cambiarIdioma($event.value)"
-    >
-      <mat-option *ngFor="let lang of langs" [value]="lang">
-        {{ lang }}
-      </mat-option>
+      >
+      @for (lang of langs; track lang) {
+        <mat-option [value]="lang">
+          {{ lang }}
+        </mat-option>
+      }
     </mat-select>
   </div>
 </div>

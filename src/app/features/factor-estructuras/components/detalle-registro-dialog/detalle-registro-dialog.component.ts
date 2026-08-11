@@ -1,8 +1,9 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
   Component,
-  Inject
+  Inject,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import {
@@ -19,22 +20,14 @@ import {
 } from '../../models/estructura-view.models';
 
 @Component({
-  selector:
-    'app-detalle-registro-dialog',
-
-  standalone: true,
-
-  imports: [
-    CommonModule,
+    selector: 'app-detalle-registro-dialog',
+    imports: [
     MatButtonModule,
     MatDialogModule
-  ],
-
-  templateUrl:
-    './detalle-registro-dialog.component.html',
-
-  styleUrl:
-    './detalle-registro-dialog.component.scss'
+],
+    templateUrl: './detalle-registro-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './detalle-registro-dialog.component.scss'
 })
 export class DetalleRegistroDialogComponent {
   constructor(

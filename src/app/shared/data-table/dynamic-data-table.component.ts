@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-dynamic-data-table',
-  standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
-  templateUrl: './dynamic-data-table.component.html'
+    selector: 'app-dynamic-data-table',
+    imports: [MatButtonModule, MatIconModule],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    templateUrl: './dynamic-data-table.component.html'
 })
 export class DynamicDataTableComponent {
   @Input() columns: string[] = [];

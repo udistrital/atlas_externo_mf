@@ -1,5 +1,5 @@
-import { Component, OnInit, computed, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, computed, signal, ChangeDetectionStrategy } from '@angular/core';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,11 +17,11 @@ import { DynamicDataTableComponent } from '../../shared/data-table/dynamic-data-
 import { GenericChartComponent } from '../../shared/generic-chart/generic-chart.component';
 
 @Component({
-  selector: 'app-caracteristica-consulta',
-  standalone: true,
-  imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule, MatPaginatorModule, LoadingStateComponent, DynamicDataTableComponent, GenericChartComponent],
-  templateUrl: './caracteristica-consulta.component.html',
-  styleUrl: './caracteristica-consulta.component.scss'
+    selector: 'app-caracteristica-consulta',
+    imports: [FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule, MatPaginatorModule, LoadingStateComponent, DynamicDataTableComponent, GenericChartComponent],
+    templateUrl: './caracteristica-consulta.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './caracteristica-consulta.component.scss'
 })
 export class CaracteristicaConsultaComponent implements OnInit {
   readonly estructura = signal<EstructuraEvidencia | null>(null);
