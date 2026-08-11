@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
     Component,
@@ -43,12 +43,11 @@ import {
 @Component({
     selector: 'app-estructura-evidencia',
     imports: [
-        CommonModule,
-        MatDialogModule,
-        MatIconModule,
-        MatPaginatorModule,
-        LoadingStateComponent
-    ],
+    MatDialogModule,
+    MatIconModule,
+    MatPaginatorModule,
+    LoadingStateComponent
+],
     templateUrl: './estructura-evidencia.component.html',
     styleUrl: './estructura-evidencia.component.scss'
 })

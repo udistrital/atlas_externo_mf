@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
     selector: 'app-loading-state',
-    imports: [CommonModule, MatProgressSpinnerModule],
+    imports: [MatProgressSpinnerModule],
     template: `
     @if (loading) {
       <div class="loading"><mat-spinner diameter="34"></mat-spinner><span>{{ label }}</span></div>

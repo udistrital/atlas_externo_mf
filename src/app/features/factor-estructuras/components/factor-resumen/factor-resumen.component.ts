@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   Input
@@ -13,9 +13,8 @@ import {
 @Component({
     selector: 'app-factor-resumen',
     imports: [
-        CommonModule,
-        MatIconModule
-    ],
+    MatIconModule
+],
     templateUrl: './factor-resumen.component.html',
     styleUrl: './factor-resumen.component.scss'
 })

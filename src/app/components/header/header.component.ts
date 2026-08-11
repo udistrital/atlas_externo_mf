@@ -2,14 +2,14 @@ import {Component, Input, ViewEncapsulation } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+
 import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    imports: [MatSelectModule, RouterModule, CommonModule],
+    imports: [MatSelectModule, RouterModule],
     encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent{

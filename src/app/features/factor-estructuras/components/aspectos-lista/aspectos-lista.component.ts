@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
   Component,
@@ -29,11 +29,10 @@ import {
 @Component({
     selector: 'app-aspectos-lista',
     imports: [
-        CommonModule,
-        MatIconModule,
-        LoadingStateComponent,
-        EstructuraEvidenciaComponent
-    ],
+    MatIconModule,
+    LoadingStateComponent,
+    EstructuraEvidenciaComponent
+],
     templateUrl: './aspectos-lista.component.html',
     styleUrl: './aspectos-lista.component.scss'
 })

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
   Component,
@@ -20,10 +20,9 @@ import {
 @Component({
     selector: 'app-caracteristicas-lista',
     imports: [
-        CommonModule,
-        MatIconModule,
-        AspectosListaComponent
-    ],
+    MatIconModule,
+    AspectosListaComponent
+],
     templateUrl: './caracteristicas-lista.component.html',
     styleUrl: './caracteristicas-lista.component.scss'
 })

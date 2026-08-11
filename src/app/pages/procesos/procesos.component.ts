@@ -1,5 +1,5 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { finalize, of, switchMap } from 'rxjs';
@@ -18,15 +18,14 @@ import { NavigationStateService } from '../../core/state/navigation-state.servic
 @Component({
     selector: 'app-procesos',
     imports: [
-        CommonModule,
-        FormsModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        LoadingStateComponent
-    ],
+    FormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    LoadingStateComponent
+],
     templateUrl: './procesos.component.html',
     styleUrls: ['./procesos.component.scss']
 })

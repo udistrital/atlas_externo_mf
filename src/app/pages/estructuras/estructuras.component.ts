@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
   Component,
@@ -47,13 +47,12 @@ import {
 @Component({
     selector: 'app-estructuras',
     imports: [
-        CommonModule,
-        MatButtonModule,
-        MatIconModule,
-        LoadingStateComponent,
-        FactorResumenComponent,
-        CaracteristicasListaComponent
-    ],
+    MatButtonModule,
+    MatIconModule,
+    LoadingStateComponent,
+    FactorResumenComponent,
+    CaracteristicasListaComponent
+],
     templateUrl: './estructuras.component.html',
     styleUrl: './estructuras.component.scss'
 })

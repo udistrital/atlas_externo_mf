@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 
 import {
   Component,
@@ -21,10 +21,9 @@ import {
 @Component({
     selector: 'app-detalle-registro-dialog',
     imports: [
-        CommonModule,
-        MatButtonModule,
-        MatDialogModule
-    ],
+    MatButtonModule,
+    MatDialogModule
+],
     templateUrl: './detalle-registro-dialog.component.html',
     styleUrl: './detalle-registro-dialog.component.scss'
 })

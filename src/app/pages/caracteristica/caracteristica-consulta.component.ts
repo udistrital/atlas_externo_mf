@@ -1,5 +1,5 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +18,7 @@ import { GenericChartComponent } from '../../shared/generic-chart/generic-chart.
 
 @Component({
     selector: 'app-caracteristica-consulta',
-    imports: [CommonModule, FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule, MatPaginatorModule, LoadingStateComponent, DynamicDataTableComponent, GenericChartComponent],
+    imports: [FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule, MatPaginatorModule, LoadingStateComponent, DynamicDataTableComponent, GenericChartComponent],
     templateUrl: './caracteristica-consulta.component.html',
     styleUrl: './caracteristica-consulta.component.scss'
 })
